@@ -1,17 +1,20 @@
+"use client";
+
 import CurrentProduct from "@/components/Shop/product/CurrentProduct";
 import SimilarProducts from "@/components/Shop/product/SimilarProducts";
+import { useParams } from "next/navigation";
 
-const Product = async ({ params }: { params: {
-  id: string; slug: string 
-} }) => {
-  const id = params.id;
+const Product = () => {
+  const { id } = useParams();
 
-  return (
-    <div className="box my-auto">
-      <CurrentProduct id={id} />
-      <SimilarProducts />
-    </div>
-  );
+  if (id && typeof id === "string") {
+    return (
+      <div className="box my-auto flex flex-col">
+        <CurrentProduct id={id} />
+        <SimilarProducts />
+      </div>
+    );
+  }
 };
 
 export default Product;
