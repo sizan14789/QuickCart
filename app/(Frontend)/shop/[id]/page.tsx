@@ -4,8 +4,7 @@ import SimilarProducts from "@/components/Shop/product/SimilarProducts";
 const Product = async ({ params }: { params: {
   id: string; slug: string 
 } }) => {
-  const res= await params
-  const id = res.id;
+  const id = params.id;
 
   return (
     <div className="box my-auto">

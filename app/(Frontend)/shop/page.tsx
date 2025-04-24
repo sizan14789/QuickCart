@@ -1,13 +1,23 @@
 import Main from "@/components/Shop/Main";
 import React from "react";
 
-const productData = async (params?: string) => {
+const parameterFetch = async (params: string) => {
+  const res = await fetch(
+    `http://localhost:3000/api/products?search=${params}`
+  );
+  return res;
+};
+
+const basicFetch = async () => {
+  const res = await fetch(`http://localhost:3000/api/products`);
+  return res;
+};
+
+const productData = async (params: string | undefined) => {
   let res1: Response;
-  if (params) {
-    res1 = await fetch(`http://localhost:3000/api/products?search=${params}`);
-  } else {
-    res1 = await fetch(`http://localhost:3000/api/products`);
-  }
+
+  if (params) res1 = await parameterFetch(params);
+  else res1 = await basicFetch();
 
   const res2 = await res1.json();
   return res2;
