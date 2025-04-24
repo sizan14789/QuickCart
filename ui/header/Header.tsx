@@ -1,29 +1,44 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import { CiSearch } from "react-icons/ci";
-import { MdOutlineAccountCircle } from "react-icons/md";
 import Link from "next/link";
-import Nav from "./Nav";
+import Nav from "./Navbar/Nav";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
-import NavMobile from "./NavMobile";
+import NavMobile from "./Navbar/NavMobile";
 import { useState } from "react";
+import Search from "./Search";
+import { RxCross1 } from "react-icons/rx";
+import Account from "./authentication/Account";
+import AuthButtons from "./authentication/AuthButtons";
+import Auth from "./Auth";
 
 export const Header = () => {
-  const [ open, isOpen ]  = useState<boolean>(false);
+  // Navbar
+  const [open, isOpen] = useState<boolean>(false);
+  const handleNavToggle = () => {
+    isOpen((prev) => !prev);
+  };
 
-  const handleNavToggle = ()=>{
-      isOpen(prev => !prev);
-      console.log(open)
-  }
+  // Search
+  const [on, setOn] = useState<boolean>(false);
+  const handleSearchToggle = () => {
+    setOn((prev) => !prev);
+  };
+
+  //! Account logged in logic here nad line >75
+  const loggedIn = false;
 
   return (
-    <header className="box py-3.5 m-auto max-w-big border-b-1 border-b-gray-300">
+    <header className="box py-3.5 max-w-big border-b-1 border-b-gray-300 mb-8 md:mb-12">
       <div className="flex justify-between">
         <div className="flex gap-2">
           <div className="flex items-center md:hidden cursor-pointer bg-white p-1 hover:bg-orange-600 duration-150 hover:text-white rounded-full">
-            <HiOutlineBars3BottomLeft className={`text-2xl duration-150 ${open? "rotate-180" : "" } `} onClick={handleNavToggle}  />
+            <HiOutlineBars3BottomLeft
+              className={`text-2xl duration-150 ${open ? "rotate-180" : ""} `}
+              onClick={handleNavToggle}
+            />
           </div>
           <Link href="/">
             <figure>
@@ -36,19 +51,29 @@ export const Header = () => {
             </figure>
           </Link>
         </div>
-        <div className={`fixed md:hidden bottom-0 left-0 z-50 ${open? "" : "-translate-x-full"} duration-150 `} >
+        <div
+          className={`fixed md:hidden bottom-0 left-0 z-50 ${
+            open ? "" : "-translate-x-full"
+          } duration-150 `}
+        >
           <NavMobile handleNavToggle={handleNavToggle} />
         </div>
         <div className="hidden md:flex items-center">
           <Nav />
         </div>
-        <div className="flex items-center gap-4">
-          <button>
-            <CiSearch className="text-2xl text-" />
+        <div className="flex items-center gap-4 relative">
+          <Search on={on} />
+          <button
+            className="cursor-pointer hover:text-white hover:bg-amber-600 rounded-full p-[.20rem]"
+            onClick={handleSearchToggle}
+          >
+            {on ? (
+              <RxCross1 className="text-2xl " />
+            ) : (
+              <CiSearch className="text-2xl" />
+            )}
           </button>
-          <button className="flex items-center gap-1.5">
-            <MdOutlineAccountCircle className="text-xl" /> Account
-          </button>
+          <Auth />
         </div>
       </div>
     </header>

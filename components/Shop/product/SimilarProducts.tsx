@@ -1,0 +1,30 @@
+import Item from '@/components/Home/popular/Item';
+import { productsInterface } from '@/types/Interfaces';
+import React from 'react'
+
+const productData = async()=>{
+  const res1 = await fetch("http://localhost:3000/api/products");
+  const res2 = await res1.json();
+  return res2;
+}
+
+const SimilarProducts = async ({id}: {id:string}) => {
+  const productsData = await productData();
+
+  return (
+    <div className="flex flex-col">
+        <h2 className="relative mb-6 self-center text-3xl text-[#1f2937e6] font-medium ">
+          Similar Products
+          <p className="w-1/2 h-0.5 absolute translate-x-1/2 bg-orange-600 "></p>
+        </h2>
+
+        <div className="gap-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 md:gap-12 xl:grid-cols-5">
+          {productsData.slice(0,5).map((curElem: productsInterface) => {
+            return <Item curElem={curElem} key={curElem._id} />;
+          })}
+        </div>
+      </div>
+  )
+}
+
+export default SimilarProducts

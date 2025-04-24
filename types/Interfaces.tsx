@@ -1,16 +1,29 @@
 
-export interface productInterface {
-  __v: number;
+export interface productsInterface {
   _id: string;
-  category: string;
-  date: number;
-  description: string;
-  image: string[];
-  name: string;
+  title: string,
+  desc: string;
+  image: string;
+  offerPrice: number;
+  rating: number,
+}
+
+export interface singleProductInterface {
+  title: string;
+  image: string;
+  rating: number;
+  desc: string;
   offerPrice: number;
   price: number;
-  rating: number,
-  userId: string;
+  info: {
+    brand?: string;
+    color?: string;
+    category: string;
+  };
+  username?: string;
+  _id?: string; 
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface featuredCard{

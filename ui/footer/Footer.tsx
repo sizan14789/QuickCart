@@ -2,10 +2,12 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Company from "./Company";
 
 export const Footer = () => {
+
   return (
-    <footer className="bottom-0">
+    <footer className="bottom-0 mt-8 md:mt-16">
       <div className="box py-16 flex flex-col gap-10 justify-between sm:flex-row sm:gap-16">
         <div className="max-w-3xl">
           <figure className="mb-7">
@@ -25,30 +27,7 @@ export const Footer = () => {
             and scrambled it to make a type specimen book.
           </p>
         </div>
-        <div>
-          <h2 className="mb-3">Company</h2>
-          <ul className="lightText leading-7">
-            <li>
-              <Link
-                href="/"
-                className="border-b-1 border-b-transparent hover:border-b-orange-500 "
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="border-b-1 border-b-transparent hover:border-b-orange-500"
-              >
-                Contact us
-              </Link>
-            </li>
-            <li className="text-nowrap border-b-1 border-b-transparent cursor-pointer hover:border-b-orange-500">
-              Privacy Policy
-            </li>
-          </ul>
-        </div>
+        <Company />
         <div>
           <h2 className="mb-4">Get In Touch</h2>
           <ul className="lightText flex flex-col gap-1.5">

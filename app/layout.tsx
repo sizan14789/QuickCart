@@ -3,6 +3,8 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/ui/header/Header";
 import { Footer } from "@/ui/footer/Footer";
+import {AppContextProvider} from "@/context/AppContext"
+import { ClerkProvider } from "@clerk/nextjs";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -21,12 +23,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.className}`} >
-        <div className="bg-white min-h-svh" >
-        <Header/>
-        {children}
-        <Footer/>
-        </div>
+      <head>
+        <link rel="icon" href="/icon.png" />
+      </head>
+      <body className={`${outfit.className}`}>
+        <ClerkProvider>
+          <AppContextProvider >
+          <div className="bg-white min-h-svh flex flex-col">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+          </AppContextProvider >
+        </ClerkProvider>
       </body>
     </html>
   );

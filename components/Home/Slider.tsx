@@ -12,7 +12,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 
 const Slider = () => {
   return (
-    <div className="pt-6 mb-8 overflow-hidden">
+    <div className="mb-8 overflow-hidden">
       <div>
         <div>
           <Swiper
