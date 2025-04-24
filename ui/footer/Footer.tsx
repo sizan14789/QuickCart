@@ -34,7 +34,7 @@ export const Footer = () => {
             <li>Socials to be added</li>
             <li>sizanalt@gmail.com</li>
             <li>
-              <a href="#" className="font-semibold text-orange-500" >
+              <a href="https://github.com/sizan14789/QuickCart" className="font-semibold text-orange-500" >
                 Source Code
               </a>
             </li>
