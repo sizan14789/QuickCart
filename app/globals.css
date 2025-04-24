@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,7 +26,28 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.lightText{
+  @apply text-[.875rem];
+  color: #6b7280;
+}
 
 .box{
-  @apply ;
+  padding-inline: 1.5rem;
+}
+
+@media (width>40rem){
+  .box{
+    padding-inline: 4rem;
+  }
+}
+
+@media (width>64rem){
+  .box{
+    padding-inline: 8rem;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #ff6900 !important;
 }

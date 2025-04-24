@@ -46,8 +46,10 @@ import product_details_page_apple_earphone_image2 from "./product_details_page_a
 import product_details_page_apple_earphone_image3 from "./product_details_page_apple_earphone_image3.png";
 import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
 import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
+import contact_girl from "./contact-girl.png"
 
 export const assets = {
+  contact_girl,
   logo,
   search_icon,
   user_icon,
@@ -130,6 +132,33 @@ export const HomeIcon = () => (
   </svg>
 );
 
+export const sliderInfo = [
+  {
+    "id": 1,
+    "offer": "Limited Time Offer 30% Off",
+    "headline": "Experience Pure Sound - Your Perfect Headphones Awaits!",
+    "primaryButton": "Buy now",
+    "image": assets.header_headphone_image,
+    "secondaryButton": "Learn more"
+  },
+  {
+    "id": 2,
+    "offer": "Hurry up only few lefts!",
+    "headline": "Next-Level Gaming Starts Here - Discover PlayStation 5 Today!",
+    "primaryButton": "Shop now",
+    "image": assets.header_playstation_image,
+    "secondaryButton": "Explore Deals"
+  },
+  {
+    "id": 3,
+    "offer": "Exclusive Deal 40% off",
+    "headline": "Power Meets Elegance - Apple MacBook Pro is Here for you!",
+    "primaryButton": "Order now",
+    "image": assets.header_macbook_image,
+    "secondaryButton": "Learn more"
+  }
+]
+
 export const productsDummyData = [
   {
     "_id": "67a1f4e43f34a77b6dde9144",
@@ -146,6 +175,7 @@ export const productsDummyData = [
     ],
     "category": "Earphone",
     "date": 1738667236865,
+    "rating": 4.2,
     "__v": 0
   },
   {
@@ -160,6 +190,7 @@ export const productsDummyData = [
     ],
     "category": "Headphone",
     "date": 1738667310300,
+    "rating": 4.7,
     "__v": 0
   },
   {
@@ -174,6 +205,7 @@ export const productsDummyData = [
     ],
     "category": "Smartphone",
     "date": 1738667366224,
+    "rating": 3.9,
     "__v": 0
   },
   {
@@ -188,6 +220,7 @@ export const productsDummyData = [
     ],
     "category": "Earphone",
     "date": 1738667417511,
+    "rating": 4.5,
     "__v": 0
   },
   {
@@ -202,6 +235,7 @@ export const productsDummyData = [
     ],
     "category": "Accessories",
     "date": 1738667503075,
+    "rating": 4.8,
     "__v": 0
   },
   {
@@ -216,6 +250,7 @@ export const productsDummyData = [
     ],
     "category": "Camera",
     "date": 1738667788883,
+    "rating": 4.1,
     "__v": 0
   },
   {
@@ -230,6 +265,7 @@ export const productsDummyData = [
     ],
     "category": "Laptop",
     "date": 1738667977644,
+    "rating": 3.7,
     "__v": 0
   },
   {
@@ -244,6 +280,7 @@ export const productsDummyData = [
     ],
     "category": "Earphone",
     "date": 1738668086331,
+    "rating": 4.4,
     "__v": 0
   },
   {
@@ -258,6 +295,7 @@ export const productsDummyData = [
     ],
     "category": "Accessories",
     "date": 1738668126660,
+    "rating": 4.0,
     "__v": 0
   },
   {
@@ -272,20 +310,32 @@ export const productsDummyData = [
     ],
     "category": "Laptop",
     "date": 1738668619198,
+    "rating": 3.6,
     "__v": 0
   }
-]
+];
 
-export const userDummyData = {
-  "_id": "user_2sZFHS1UIIysJyDVzCpQhUhTIhw",
-  "name": "GreatStack",
-  "email": "admin@example.com",
-  "imageUrl": "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18ycnlnUnFiUDBYT2dEZ2h1ZmRXcGlpdWV5OXoiLCJyaWQiOiJ1c2VyXzJzWkZIUzFVSUl5c0p5RFZ6Q3BRaFVoVElodyJ9",
-  "cartItems": {
-    // "67a1f4e43f34a77b6dde9144": 3
+export const featured = [
+  {
+    id: 1,
+    image: assets.girl_with_headphone_image,
+    title: "Unparalleled Sound",
+    description: "Experience crystal-clear audio with premium headphones.",
   },
-  "__v": 0
-}
+  {
+    id: 2,
+    image: assets.girl_with_earphone_image,
+    title: "Stay Connected",
+    description: "Compact and stylish earphones for every occasion.",
+  },
+  {
+    id: 3,
+    image: assets.boy_with_laptop_image,
+    title: "Power in Every Pixel",
+    description: "Shop the latest laptops for work, gaming, and more.",
+  },
+];
+
 
 export const orderDummyData = [
   {

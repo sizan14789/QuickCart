@@ -21,10 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={outfit.className}>
+      <body className={`${outfit.className}`} >
+        <div className="bg-white min-h-svh" >
         <Header/>
         {children}
         <Footer/>
+        </div>
       </body>
     </html>
   );
