@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Filter from "./Filter";
 import Products from "./Products";
+import { productsInterface } from "@/types/Interfaces";
 
-const Main = ({ productsData, search }: { productsData: any; search: any }) => {
+const Main = ({ productsData, search }: { productsData: productsInterface[]; search: string | undefined }) => {
   // Range functionality
   const [minMax, setMinMax] = useState<[number, number]>([0, 10000]);
-  const handleRangeChange = (e: any) => {
+  const handleRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const name = e.target.name;
     const value = Number(e.target.value);
 
@@ -20,8 +21,8 @@ const Main = ({ productsData, search }: { productsData: any; search: any }) => {
 
   // Order Functionality
   const [sortedProductsData, setSortedProductsData] = useState(productsData);
-  const handleSorting = (e: any, value: string) => {
-    switch (value) {
+  const handleSorting = (e:React.ChangeEvent<HTMLSelectElement>) => {
+    switch (e.target.value) {
       case "none":
         setSortedProductsData(productsData);
         break;
@@ -32,7 +33,7 @@ const Main = ({ productsData, search }: { productsData: any; search: any }) => {
               a.offerPrice - b.offerPrice
           );
         };
-        setSortedProductsData(resAsc);
+        setSortedProductsData(resAsc());
         break;
       case "des":
         const resDes = () => {
@@ -41,7 +42,7 @@ const Main = ({ productsData, search }: { productsData: any; search: any }) => {
               b.offerPrice - a.offerPrice 
           );
         };
-        setSortedProductsData(resDes);
+        setSortedProductsData(resDes());
         break;
     }
   };

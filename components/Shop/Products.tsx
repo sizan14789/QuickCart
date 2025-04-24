@@ -6,8 +6,8 @@ const Products = ({
   search,
   minMax,
 }: {
-  productsData: any;
-  search: any;
+  productsData: productsInterface[];
+  search: string | undefined;
   minMax: number[];
 }) => {
   const newProductsData = () => {
@@ -40,7 +40,7 @@ const Products = ({
         </>
       ) : (
         <h2 className="text-2xl md:text-4xl text-gray-700 font-medium">
-          No Product found for "{search}"
+          No Product found for &quot;{search}&quot;
         </h2>
       )}
     </div>

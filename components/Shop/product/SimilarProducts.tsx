@@ -8,7 +8,7 @@ const productData = async()=>{
   return res2;
 }
 
-const SimilarProducts = async ({id}: {id:string}) => {
+const SimilarProducts = async () => {
   const productsData = await productData();
 
   return (

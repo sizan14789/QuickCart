@@ -10,7 +10,7 @@ const Product = async ({ params }: { params: {
   return (
     <div className="box my-auto">
       <CurrentProduct id={id} />
-      <SimilarProducts id={id} />
+      <SimilarProducts />
     </div>
   );
 };

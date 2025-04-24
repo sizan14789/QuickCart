@@ -2,7 +2,7 @@ import Main from "@/components/Shop/Main";
 import React from "react";
 
 const productData = async (params?: string) => {
-  let res1: any;
+  let res1:Response;
   params
     ? (res1 = await fetch(
         `http://localhost:3000/api/products?search=${params}`

@@ -10,8 +10,7 @@ const productData = async()=>{
 }
 
 const Popular = async () => {
-  // const productsData = await productData();
-  const productsData:any = [];
+  const productsData = await productData();
 
   return (
     <div className="mb-10 flex flex-col">

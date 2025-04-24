@@ -1,9 +1,11 @@
 "use client";
 
+import { ChangeEventHandler } from "react";
+
 interface filterInterface {
   minMax: number[];
-  handleRangeChange: any;
-  handleSorting: any;
+  handleRangeChange: ChangeEventHandler;
+  handleSorting: ChangeEventHandler;
 }
 
 const Filter = ({
@@ -39,7 +41,7 @@ const Filter = ({
         <div className="flex-1 flex">
           <select
             className="border-1 border-gray-300 focus:border-orange-600 px-4 text-sm py-3 rounded-md md:ml-auto "
-            onChange={(e) => handleSorting(e, e.target.value)}
+            onChange={(e) => handleSorting(e)}
           >
             <option value="none">Most relevant</option>
             <option value="asc">Low to high</option>
