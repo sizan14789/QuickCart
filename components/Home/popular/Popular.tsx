@@ -4,7 +4,7 @@ import Item from "./Item";
 import Link from "next/link";
 
 const productData = async()=>{
-    const res1 = await fetch("http://localhost:3000/api/products?limit=8");
+    const res1 = await fetch(`${process.env.BASE_URL as string}/api/products?limit=8`);
     const res2 = await res1.json();
     return res2;
 }

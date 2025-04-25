@@ -8,15 +8,15 @@ const CurrentProduct = ({ id }: { id: string }) => {
   const [data, setData] = useState<singleProductInterface>();
 
   useEffect(() => {
-    const productDetails = async (id: string) => {
+    const productDetails = async () => {
       const res1 = await fetch(
         `/api/products/${id}`
       );
       const res2 = await res1.json();
       setData(res2);
     };
-    productDetails(id);
-  }, []);
+    productDetails();
+  }, [id]);
 
   if (data) {
     const { title, image, desc, offerPrice, price, info, rating } = data;

@@ -1,41 +1,29 @@
-import Main from "@/components/Shop/Main";
-import React from "react";
+"use client";
 
-const parameterFetch = async (params: string) => {
-  const res = await fetch(
-    `http://localhost:3000/api/products?search=${params}`
-  );
-  return res;
-};
+import React, { lazy, Suspense, useEffect, useState } from "react";
+const Main = lazy(() => import("@/components/Shop/Main"));
 
-const basicFetch = async () => {
-  const res = await fetch(`http://localhost:3000/api/products`);
-  return res;
-};
+const Shop = () => {
+  const [productsData, setProductsData] = useState();
 
-const productData = async (params: string | undefined) => {
-  let res1: Response;
+  useEffect(() => {
+    const basicFetch = async () => {
+      const data = await fetch(`/api/products`);
+      const res = await data.json();
+      setProductsData(res);
+    };
+    basicFetch();
+  }, []);
 
-  if (params) res1 = await parameterFetch(params);
-  else res1 = await basicFetch();
-
-  const res2 = await res1.json();
-  return res2;
-};
-
-const Shop = async ({
-  searchParams,
-}: {
-  searchParams: { search?: string };
-}) => {
-  const search = searchParams?.search;
-  const productsData = await productData(search);
-
-  return (
-    <div className="box flex-1">
-      <Main productsData={productsData} search={search} />
-    </div>
-  );
+  if (!productsData) return <div>Loading...</div>;
+  if (productsData)
+    return (
+      <Suspense fallback={<div>loading......</div>}>
+        <div className="box flex-1">
+          <Main productsData={productsData} />
+        </div>
+      </Suspense>
+    );
 };
 
 export default Shop;

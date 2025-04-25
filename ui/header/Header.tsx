@@ -21,14 +21,7 @@ export const Header = () => {
     isOpen((prev) => !prev);
   };
 
-  // Search
-  const [on, setOn] = useState<boolean>(false);
-  const handleSearchToggle = () => {
-    setOn((prev) => !prev);
-  };
-
-  //! Account logged in logic here nad line >75
-  const loggedIn = false;
+  
 
   return (
     <header className="box py-3.5 max-w-big border-b-1 border-b-gray-300 mb-8 md:mb-12">
@@ -62,17 +55,7 @@ export const Header = () => {
           <Nav />
         </div>
         <div className="flex items-center gap-4 relative">
-          <Search on={on} />
-          <button
-            className="cursor-pointer hover:text-white hover:bg-amber-600 rounded-full p-[.20rem]"
-            onClick={handleSearchToggle}
-          >
-            {on ? (
-              <RxCross1 className="text-2xl " />
-            ) : (
-              <CiSearch className="text-2xl" />
-            )}
-          </button>
+          
           <Auth />
         </div>
       </div>

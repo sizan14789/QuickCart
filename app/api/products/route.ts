@@ -9,8 +9,8 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
  
   // search query implementation
-  const search = url.searchParams.get("search");
-  const query = search ? { title: { $regex: search, $options: "i" } } : {};
+  // const search = url.searchParams.get("search");
+  // const query = search ? { title: { $regex: search, $options: "i" } } : {};
 
   // limit function for popular and shop section
   const popularLimit = url.searchParams.get("limit");
@@ -25,7 +25,7 @@ export async function GET(req: Request) {
     rating: 1,
   };
 
-  const productsData = await Product.find(query, dataFilter).limit(limit);
+  const productsData = await Product.find({}, dataFilter).limit(limit);
 
   return new NextResponse(JSON.stringify(productsData), { status: 200 });
 }

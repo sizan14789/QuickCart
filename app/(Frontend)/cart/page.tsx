@@ -1,11 +1,8 @@
 'use client'
 
 import CartList from "@/components/cart/Cart";
-import { useAppContext } from "@/context/AppContext";
 
 const Cart = () => {
-  const { user } = useAppContext();
-  console.log(user);
 
   return (
     <div className="box flex-1">

@@ -5,7 +5,7 @@ import Filter from "./Filter";
 import Products from "./Products";
 import { productsInterface } from "@/types/Interfaces";
 
-const Main = ({ productsData, search }: { productsData: productsInterface[]; search: string | undefined }) => {
+const Main = ({ productsData}: { productsData: productsInterface[] }) => {
   // Range functionality
   const [minMax, setMinMax] = useState<[number, number]>([0, 10000]);
   const handleRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -54,7 +54,7 @@ const Main = ({ productsData, search }: { productsData: productsInterface[]; sea
         handleRangeChange={handleRangeChange}
         handleSorting={handleSorting}
       />
-      <Products productsData={sortedProductsData} search={search} minMax={minMax} />
+      <Products productsData={sortedProductsData} minMax={minMax} />
     </>
   );
 };
