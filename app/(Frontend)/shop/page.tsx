@@ -8,7 +8,7 @@ const Shop = () => {
 
   useEffect(() => {
     const basicFetch = async () => {
-      const data = await fetch(`/api/products`);
+      const data = await fetch(`${process.env.BASE_URL as string}/api/products`);
       const res = await data.json();
       setProductsData(res);
     };
