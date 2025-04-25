@@ -10,7 +10,7 @@ const CurrentProduct = ({ id }: { id: string }) => {
   useEffect(() => {
     const productDetails = async () => {
       const res1 = await fetch(
-        `${process.env.BASE_URL as string}/api/products/${id}`
+        `/api/products/${id}`
       );
       const res2 = await res1.json();
       setData(res2);
