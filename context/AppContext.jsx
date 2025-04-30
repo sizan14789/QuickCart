@@ -1,22 +1,20 @@
-'use client'
+"use client";
 
 import { useUser } from "@clerk/nextjs";
-import { createContext, useContext } from "react"
+import { createContext, useContext } from "react";
 
-const AppContext =  createContext(null);
+const AppContext = createContext(null);
 
-export const AppContextProvider = ({children}) => {
+export const AppContextProvider = ({ children }) => {
   const { user } = useUser();
 
-  const value={
-    user
-  }
+  const value = {
+    user,
+  };
 
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  )
-}
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
 
-export const useAppContext = ()=> useContext(AppContext) 
+export const useAppContext = () => {
+  return useContext(AppContext);
+};

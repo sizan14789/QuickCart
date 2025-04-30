@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${outfit.className}`}>
         <ClerkProvider>
           <AppContextProvider >
-          <div className="bg-white min-h-svh flex flex-col">
+          <div className="bg-white text-black min-h-svh flex flex-col">
             <Header />
             {children}
             <Footer />

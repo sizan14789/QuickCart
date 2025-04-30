@@ -25,7 +25,6 @@ export async function POST(req:any) {
 
       if (eventType == "user.created") {
         await User.create(userData);
-        console.log("created")
       }
 
       if (eventType === "user.updated")
