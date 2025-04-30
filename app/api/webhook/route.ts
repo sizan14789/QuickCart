@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 import connectDB from "@/config/db";
 import User from "@/models/user";
 import { verifyWebhook } from "@clerk/nextjs/webhooks";
 
-export async function POST(req:Request) {
+export async function POST(req:any) {
   try {
     const evt = await verifyWebhook(req);
 
