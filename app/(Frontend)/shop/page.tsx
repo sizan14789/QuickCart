@@ -14,6 +14,7 @@ const Shop = () => {
     };
     basicFetch();
   }, []);
+  
 
   if (!productsData) return <div>Loading...</div>;
   if (productsData)

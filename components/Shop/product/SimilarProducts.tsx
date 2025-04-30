@@ -7,7 +7,7 @@ const SimilarProducts = () => {
 
   useEffect(() => {
     const productData = async () => {
-      const res1 = await fetch(`${process.env.BASE_URL as string}/api/products`);
+      const res1 = await fetch(`/api/products`);
       const res2 = await res1.json();
       setProductsData(res2);
     };
