@@ -5,6 +5,7 @@ import { Header } from "@/ui/header/Header";
 import { Footer } from "@/ui/footer/Footer";
 import {AppContextProvider} from "@/context/AppContext"
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "react-hot-toast";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -27,6 +28,7 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" />
       </head>
       <body className={`${outfit.className}`}>
+        <Toaster/>
         <ClerkProvider>
           <AppContextProvider >
           <div className="bg-white text-black min-h-svh flex flex-col">

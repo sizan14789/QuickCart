@@ -9,22 +9,22 @@ const Item = ({ curElem }: { curElem: productsInterface }) => {
       className="grid gap-1 max-w-[14.5rem] justify-self-center"
       href={`/shop/${curElem._id}`}
     >
-      <div className="bg-[#E6E9F2] rounded-2xl mb-4">
+      <div className="bg-[#E6E9F2] min-w-40 rounded-2xl mb-4">
         <figure className="object-cover relative w-auto aspect-square overflow-hidden">
           <Image
-            src={curElem.image} 
+            src={curElem.image[0]} 
             fill={true}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            alt={curElem.title}
+            alt={curElem.name}
             className="hover:scale-110 transition-all object-cover"
           />
         </figure>
       </div>
-      <h2 className="text-[1.125rem]">{curElem.title}</h2>
+      <h2 className="text-[1.125rem]">{curElem.name}</h2>
       <p className="text-[.75rem] lightText ">
-        {curElem.desc.length > 33
-          ? curElem.desc.slice(0, 33) + "..."
-          : curElem.desc}
+        {curElem.description.length > 33
+          ? curElem.description.slice(0, 33) + "..."
+          : curElem.description}
       </p>
       <div className="flex gap-2 mb-2">
         <p className="mr-3">{curElem.rating}</p>

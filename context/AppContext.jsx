@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AppContext = createContext();
@@ -8,9 +8,11 @@ const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
 
   const { user } = useUser();
+  const { getToken } = useAuth();
 
   const [ userData, setUserData ] = useState();
   const [ isSeller, setIsSeller ] = useState(false);
+  const [ cartItems, setCartItems ] = useState();
 
   const fetchUserData = ()=>{
     try {
@@ -22,6 +24,7 @@ export const AppContextProvider = ({ children }) => {
           const res1 = await fetch(`/api/users/${user.id}`);
           const res2 = await res1.json();
           setUserData(res2);
+          setCartItems(res2.cartItems);
         }
         getUserData();
       }
@@ -36,7 +39,9 @@ export const AppContextProvider = ({ children }) => {
 
   const value = {
     userData,
-    isSeller
+    isSeller,
+    getToken,
+    cartItems
   }
 
 

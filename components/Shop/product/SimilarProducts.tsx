@@ -1,5 +1,6 @@
 import Item from "@/components/Home/popular/Item";
 import { productsInterface } from "@/types/Interfaces";
+import Loader from "@/ui/loader/Loader";
 import React, { useEffect, useState } from "react";
 
 const SimilarProducts = () => {
@@ -12,9 +13,10 @@ const SimilarProducts = () => {
       setProductsData(res2);
     };
     productData();
-  },[]);
+  }, []);
 
-  if (productsData) {
+  if (!productsData) return <Loader />;
+  else {
     return (
       <div className="flex flex-col">
         <h2 className="relative mb-6 self-center text-3xl text-[#1f2937e6] font-medium ">

@@ -18,9 +18,9 @@ export async function GET(req: Request) {
 
   const dataFilter = {
     _id: 1,
-    title: 1,
+    name: 1,
     image: 1,
-    desc: 1,
+    description: 1,
     offerPrice: 1,
     rating: 1,
   };
@@ -28,12 +28,4 @@ export async function GET(req: Request) {
   const productsData = await Product.find({}, dataFilter).limit(limit);
 
   return new NextResponse(JSON.stringify(productsData), { status: 200 });
-}
-
-export async function POST(req: Request) {
-  await connectDB();
-  const body = await req.json();
-  const product = new Product(body);
-  await product.save();
-  return new NextResponse(JSON.stringify(body));
 }

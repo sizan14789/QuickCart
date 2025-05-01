@@ -1,10 +1,13 @@
 "use client";
 
+import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 const Nav = () => {
+  const { isSeller } = useAppContext();
+
   const pathName = usePathname();
   const isActive = (url: string) => {
     if (pathName==(url)) return true;
@@ -31,9 +34,9 @@ const Nav = () => {
       >
         Contact
       </Link>
-      <button className="text-xs border-1 border-gray-400 py-1.5 px-3 rounded-4xl hidden">
+      <Link href='/seller' className={`text-xs border-1 border-gray-400 py-1.5 px-3 rounded-4xl ${isSeller? "block" : "hidden"}`}>
         Seller Dashboard
-      </button>
+      </Link>
     </ul>
   );
 };

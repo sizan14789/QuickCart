@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import RatingBigger from "./RatingBigger";
 import Image from "next/image";
 import { singleProductInterface } from "@/types/Interfaces";
+import Loader from "@/ui/loader/Loader";
 
 const CurrentProduct = ({ id }: { id: string }) => {
   const [data, setData] = useState<singleProductInterface>();
@@ -18,40 +19,41 @@ const CurrentProduct = ({ id }: { id: string }) => {
     productDetails();
   }, [id]);
 
-  if (data) {
-    const { title, image, desc, offerPrice, price, info, rating } = data;
+  if(!data) return <Loader />
+  else {
+    const { name, image, description, offerPrice, price, category, rating } = data;
     return (
       <div className="mb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 text-[#1f2937e6] gap-16">
           <div className="px-5 lg:px-16 xl:px-30 2xl:px-40  flex flex-col gap-4">
             <figure className="bg-gray-500/10 rounded-lg overflow-hidden">
               <Image
-                src={image}
+                src={image[0]}
                 height={720}
                 width={1080}
-                alt={title}
+                alt={name}
                 className="w-full h-auto object-cover"
               />
             </figure>
             <div className="grid grid-cols-4 gap-4">
               <figure className="bg-gray-500/10 rounded-lg overflow-hidden cursor-pointer">
                 <Image
-                  src={image}
+                  src={image[0]}
                   height={720}
                   width={1080}
-                  alt={title}
+                  alt={name}
                   className="w-full h-auto object-cover"
                 />
               </figure>
             </div>
           </div>
           <div>
-            <h2 className="text-3xl mb-4 font-medium">{title}</h2>
+            <h2 className="text-3xl mb-4 font-medium">{name}</h2>
             <div className="flex items-center gap-3 mb-3">
               <RatingBigger rating={rating} />
               <p>({rating})</p>
             </div>
-            <p>{desc}</p>
+            <p>{description}</p>
 
             <div className="flex gap-4 mt-6 items-end">
               <p className="text-3xl font-medium">${offerPrice}</p>
@@ -61,14 +63,9 @@ const CurrentProduct = ({ id }: { id: string }) => {
             <p className="h-0.5 w-full bg-gray-200 my-6" />
 
             <div className="grid grid-cols-2 grid-rows-3 mb-6">
-              <h1 className="font-medium text-gray-600">Brand</h1>
-              <p className="text-gray-800/50">{info.brand}</p>
-
-              <h1 className="font-medium text-gray-600">Color</h1>
-              <p className="text-gray-800/50">{info.color}</p>
 
               <h1 className="font-medium text-gray-600">Category</h1>
-              <p className="text-gray-800/50">{info.category}</p>
+              <p className="text-gray-800/50">{category}</p>
             </div>
 
             <div className="flex gap-6">
