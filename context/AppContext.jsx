@@ -9,7 +9,6 @@ export const AppContextProvider = ({ children }) => {
 
   const { user } = useUser();
   const { getToken } = useAuth();
-
   const [ userData, setUserData ] = useState();
   const [ isSeller, setIsSeller ] = useState(false);
   const [ cartItems, setCartItems ] = useState();
@@ -38,6 +37,7 @@ export const AppContextProvider = ({ children }) => {
   }, [user])
 
   const value = {
+    user,
     userData,
     isSeller,
     getToken,

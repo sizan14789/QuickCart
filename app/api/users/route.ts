@@ -9,4 +9,3 @@ export async function POST(req: Request) {
   user.save();
   return new NextResponse(JSON.stringify(body));
 }
-

@@ -9,14 +9,14 @@ const Item = ({ curElem }: { curElem: productsInterface }) => {
       className="grid gap-1 max-w-[14.5rem] justify-self-center"
       href={`/shop/${curElem._id}`}
     >
-      <div className="bg-[#E6E9F2] min-w-40 rounded-2xl mb-4">
+      <div className=" min-w-40 rounded-2xl mb-4">
         <figure className="object-cover relative w-auto aspect-square overflow-hidden">
           <Image
             src={curElem.image[0]} 
             fill={true}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={curElem.name}
-            className="hover:scale-110 transition-all object-cover"
+            className="hover:scale-110 rounded-xl transition-all object-cover"
           />
         </figure>
       </div>

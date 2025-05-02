@@ -3,14 +3,14 @@
 import { useAppContext } from "@/context/AppContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+
 
 const Nav = () => {
   const { isSeller } = useAppContext();
 
   const pathName = usePathname();
   const isActive = (url: string) => {
-    if (pathName==(url)) return true;
+    if (pathName == url) return true;
     if (pathName.startsWith("/shop")) return url.startsWith("/shop");
   };
 
@@ -22,10 +22,7 @@ const Nav = () => {
       <Link href="/shop" className={isActive("/shop") ? "text-orange-600" : ""}>
         Shop
       </Link>
-      <Link
-        href="/cart"
-        className={isActive("/cart") ? "text-orange-600" : ""}
-      >
+      <Link href="/cart" className={isActive("/cart") ? "text-orange-600" : ""}>
         Cart
       </Link>
       <Link
@@ -34,7 +31,12 @@ const Nav = () => {
       >
         Contact
       </Link>
-      <Link href='/seller' className={`text-xs border-1 border-gray-400 py-1.5 px-3 rounded-4xl ${isSeller? "block" : "hidden"}`}>
+      <Link
+        href="/seller"
+        className={`text-xs border-1 border-gray-400 py-1.5 px-3 rounded-4xl ${
+          isSeller ? "block" : "hidden"
+        }`}
+      >
         Seller Dashboard
       </Link>
     </ul>

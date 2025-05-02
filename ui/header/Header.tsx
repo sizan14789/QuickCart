@@ -2,16 +2,11 @@
 
 import Image from "next/image";
 import { assets } from "@/assets/assets";
-import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
 import Nav from "./Navbar/Nav";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import NavMobile from "./Navbar/NavMobile";
 import { useState } from "react";
-import Search from "./Search";
-import { RxCross1 } from "react-icons/rx";
-import Account from "./authentication/Account";
-import AuthButtons from "./authentication/AuthButtons";
 import Auth from "./Auth";
 
 export const Header = () => {

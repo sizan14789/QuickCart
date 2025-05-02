@@ -12,3 +12,4 @@ export async function GET(
   return new NextResponse(JSON.stringify(productData));
 }
 
+

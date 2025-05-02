@@ -1,9 +1,12 @@
-import React from "react";
+import ProductsList from "@/components/seller/productsList/ProductsList";
 
 const Products = () => {
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col gap-6 p-4 grow">
       <h2 className="text-2xl text-gray-700">All Products</h2>
+
+      <ProductsList />
+
     </div>
   );
 };

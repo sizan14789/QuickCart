@@ -7,6 +7,14 @@ export interface productsInterface {
   rating: number;
 }
 
+export interface productsListInterface {
+  _id: string;
+  name: string;
+  image: [any];
+  offerPrice: number;
+  category: number;
+}
+
 export interface singleProductInterface {
   name: string;
   image: [any];
