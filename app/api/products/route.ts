@@ -25,7 +25,7 @@ export async function GET(req: Request) {
     rating: 1,
   };
 
-  const productsData = await Product.find({}, dataFilter).limit(limit);
+  const productsData = await Product.find({}, dataFilter).limit(limit).sort({createdAt: -1});
 
   return new NextResponse(JSON.stringify(productsData), { status: 200 });
 }

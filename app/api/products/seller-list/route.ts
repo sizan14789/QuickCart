@@ -8,7 +8,7 @@ export const GET = async () => {
   const { userId } = await auth();
   connectDB();
   try {
-    const products = await Product.find({ userId: userId });
+    const products = await Product.find({ userId: userId }).sort({createdAt: -1});
     return new NextResponse(JSON.stringify(products));
   } catch (error) {
     console.log(error);

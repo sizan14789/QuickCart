@@ -9,7 +9,7 @@ export async function DELETE(
   await connectDB();
   const id = (await params).id;
   try {
-    const productData = await Product.findByIdAndDelete(id);
+    const productData = await Product.findByIdAndDelete(id).sort({createdAt: -1});
     return new NextResponse(JSON.stringify(productData));
   } catch (error) {
     console.log(error);
