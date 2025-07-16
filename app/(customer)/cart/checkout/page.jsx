@@ -75,7 +75,7 @@ const Checkout = () => {
       })
     );
     await synchUserOrder();
-    // clearCart();
+    clearCart();
     toast.success("Order Placed");
     router.push('/cart/checkout/thankyou');
   };

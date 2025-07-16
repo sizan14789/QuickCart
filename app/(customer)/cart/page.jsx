@@ -17,7 +17,7 @@ const Cart = () => {
     const getCartData = async () => {
       setCartProductsDetails([]);
       if (keysArray.length == 0) {
-        console.log("Not loaded yet");
+        toast("Loading");
         return;
       }
       const productList = await Promise.all(
