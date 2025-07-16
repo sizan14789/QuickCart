@@ -63,17 +63,17 @@ const Cart = () => {
             </p>
           </div>
           <hr className="text-gray-400 mb-4" />
-          <div className="p-2 grid grid-cols-5 mb-4">
-            <h2 className="col-span-2">Product Details</h2>
-            <p className="">Price</p>
-            <p className="">Quantity</p>
-            <p className="">Subtotal</p>
+          <div className="p-2 grid grid-cols-2 md:grid-cols-5 mb-4">
+            <h2 className="md:col-span-2 flex justify-center md:justify-start">Product</h2>
+            <p className="hidden md:block">Price</p>
+            <p className="hidden md:block">Quantity</p>
+            <p className="flex justify-center md:justify-start">Subtotal</p>
           </div>
           {cartProductsDetails.map(
             ({ _id, image, name, offerPrice, quantity }) => {
               return (
-                <div className="grid rounded-b-md grid-cols-5 mb-4" key={_id}>
-                  <figure className=" flex col-span-2 items-center ">
+                <div className="grid rounded-b-md grid-cols-2 md:grid-cols-5 mb-4" key={_id}>
+                  <figure className=" flex md:col-span-2 items-center md:items-start gap-4 flex-col md:flex-row">
                     <Image
                       height={200}
                       width={200}
@@ -83,13 +83,13 @@ const Cart = () => {
                     />
                     <h2 className=" text-gray-700 ">{name}</h2>
                   </figure>
-                  <p className="text-sm flex items-center">${offerPrice}</p>
-                  <div className="text-sm flex gap-2 items-center">
+                  <p className="text-sm items-center hidden md:flex">${offerPrice}</p>
+                  <div className="text-sm gap-2 items-center hidden md:flex">
                     <button> - </button>
                     <p>{quantity}</p>
                     <button> + </button>
                   </div>
-                  <p className="text-sm flex items-center">
+                  <p className="text-sm flex justify-center md:justify-start items-center">
                     {quantity}x{offerPrice}=
                     <span className="font-semibold">
                       ${quantity * offerPrice}

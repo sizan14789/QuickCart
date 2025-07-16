@@ -37,7 +37,7 @@ export async function POST(req) {
       await User.findByIdAndDelete(id);
     }
 
-    return new Response("User synced", { status: 400 });
+    return new Response("User synced", { status: 200 });
 
   } catch (err) {
     console.error("Error verifying webhook:", err);
