@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Alienware X15 R2 Gaming Laptop",
+    "image": ["alienware_x15.jpg", "alienware_angle.jpg"],
+    "rating": 4.8,
+    "desc": "12th Gen Intel Core i9, RTX 3080 Ti, 32GB DDR5 RAM, 1TB NVMe SSD",
+    "offerPrice": 2799.99,
+    "price": 3199.99,
+    "info": {
+      "brand": "Dell",
+      "color": "Lunar Light",
+      "category": "Gaming Hardware"
+    },
+    "username": "tech_guru2023"
+  },
+  {
+    "title": "Logitech MX Master 3S Wireless Mouse",
+    "image": ["mx_master_3s.jpg"],
+    "rating": 4.7,
+    "desc": "8K DPI Darkfield tracking, silent clicks, multi-device pairing",
+    "offerPrice": 99.95,
+    "price": 129.95,
+    "info": {
+      "brand": "Logitech",
+      "color": "Graphite",
+      "category": "Computer Accessories"
+    },
+    "username": "productivity_pro"
+  },
+  {
+    "title": "Samsung T7 Shield 2TB Portable SSD",
+    "image": ["samsung_t7.jpg", "t7_accessories.jpg"],
+    "rating": 4.6,
+    "desc": "IP65 water/dust resistance, USB 3.2 Gen 2, 1050MB/s read",
+    "offerPrice": 149.99,
+    "price": 199.99,
+    "info": {
+      "brand": "Samsung",
+      "color": "Beige",
+      "category": "Storage Devices"
+    },
+    "username": "data_hoarder"
+  },
+  {
+    "title": "Razer BlackWidow V4 Pro Mechanical Keyboard",
+    "image": ["razer_keyboard.jpg"],
+    "rating": 4.5,
+    "desc": "Razer Green switches, per-key RGB, magnetic wrist rest",
+    "offerPrice": 229.00,
+    "price": 279.00,
+    "info": {
+      "brand": "Razer",
+      "color": "Black",
+      "category": "Gaming Peripherals"
+    },
+    "username": "esports_champ"
+  },
+  {
+    "title": "Apple AirPods Pro (2nd Generation)",
+    "image": ["airpods_pro2.jpg"],
+    "rating": 4.7,
+    "desc": "Active noise cancellation, spatial audio, MagSafe charging",
+    "offerPrice": 199.00,
+    "price": 249.00,
+    "info": {
+      "brand": "Apple",
+      "color": "White",
+      "category": "Audio Devices"
+    },
+    "username": "apple_fanatic"
+  },
+  {
+    "title": "ASUS ROG Swift 27 4K Gaming Monitor",
+    "image": ["rog_swift.jpg"],
+    "rating": 4.8,
+    "desc": "144Hz refresh rate, G-Sync Ultimate, HDR600",
+    "offerPrice": 899.00,
+    "price": 1099.00,
+    "info": {
+      "brand": "ASUS",
+      "color": "Black",
+      "category": "Displays"
+    },
+    "username": "hardcore_gamer"
+  },
+  {
+    "title": "TP-Link Archer AXE95 Tri-Band Wi-Fi 6E Router",
+    "image": ["wifi6e_router.jpg"],
+    "rating": 4.4,
+    "desc": "10Gbps speeds, 8-stream connectivity, AI-driven mesh",
+    "offerPrice": 399.99,
+    "price": 499.99,
+    "info": {
+      "brand": "TP-Link",
+      "color": "Black",
+      "category": "Networking"
+    },
+    "username": "network_engineer"
+  },
+  {
+    "title": "Meta Quest 3 512GB VR Headset",
+    "image": ["quest3.jpg", "quest3_controllers.jpg"],
+    "rating": 4.6,
+    "desc": "Mixed reality passthrough, Snapdragon XR2 Gen 2",
+    "offerPrice": 649.00,
+    "price": 699.00,
+    "info": {
+      "brand": "Meta",
+      "color": "White",
+      "category": "Virtual Reality"
+    },
+    "username": "vr_enthusiast"
+  },
+  {
+    "title": "SanDisk Extreme PRO 1TB SD Card",
+    "image": ["sandisk_sd.jpg"],
+    "rating": 4.7,
+    "desc": "200MB/s read speed, 4K/8K video ready, shockproof",
+    "offerPrice": 159.99,
+    "price": 199.99,
+    "info": {
+      "brand": "SanDisk",
+      "color": "Gold/Black",
+      "category": "Photography Gear"
+    },
+    "username": "4k_videographer"
+  },
+  {
+    "title": "Anker 737 Power Bank 24,000mAh",
+    "image": ["anker_powerbank.jpg"],
+    "rating": 4.5,
+    "desc": "140W GaN charging, PD 3.1, digital display",
+    "offerPrice": 129.95,
+    "price": 169.95,
+    "info": {
+      "brand": "Anker",
+      "color": "Space Gray",
+      "category": "Mobile Accessories"
+    },
+    "username": "tech_nomad"
+  }
+]
