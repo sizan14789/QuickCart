@@ -11,53 +11,22 @@ export const AppContextProvider = ({ children }) => {
   const { getToken } = useAuth();
   const [userData, setUserData] = useState();
   const [isSeller, setIsSeller] = useState(false);
-  const [cartItems, setCartItems] = useState({});
-
-  const addToCart = async (itemId) => {
-    if (!user) {
-      toast.error("Please log in");
-      return;
-    }
-    let cartData = { ...cartItems };
-    if (cartData[itemId]) {
-      cartData[itemId] += 1;
+  
+  const addToCart = async (id) => {
+    console.log(id)
+    if (user) {
+      await fetch(`/api/cart/update/add`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+      toast.success("Item added to cart");
     } else {
-      cartData[itemId] = 1;
-    }
-    setCartItems(cartData);
-    try {
-      if (user) {
-        await fetch(`/api/cart/update`, {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(cartData),
-        });
-        toast.success("Item added to cart");
-      }
-    } catch (error) {
-      toast.error(error.message);
+      toast.error("Not logged in");
     }
   };
-
-  const clearCart = async ()=>{
-    setCartItems({});
-    try {
-      if (user) {
-        await fetch(`/api/cart/update`, {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({}),
-        });
-        toast.success("Cart Cleared");
-      }
-    } catch (error) {
-      toast.error(error.message);
-    }
-  }
 
   const fetchUserData = () => {
     try {
@@ -69,7 +38,6 @@ export const AppContextProvider = ({ children }) => {
           const res1 = await fetch(`/api/users/${user.id}`);
           const res2 = await res1.json();
           setUserData(res2);
-          setCartItems(res2.cartItems);
         };
         getUserData();
       }
@@ -77,7 +45,7 @@ export const AppContextProvider = ({ children }) => {
       throw new Error(error);
     }
   };
-  
+
   useEffect(() => {
     fetchUserData();
   }, [user]);
@@ -87,8 +55,6 @@ export const AppContextProvider = ({ children }) => {
     userData,
     isSeller,
     getToken,
-    cartItems,
-    clearCart,
     addToCart,
   };
 

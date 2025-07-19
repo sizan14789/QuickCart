@@ -16,5 +16,3 @@ export async function POST(req) {
     await order.save();
     return new NextResponse(JSON.stringify(order));
 }
-
-

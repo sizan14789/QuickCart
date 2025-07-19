@@ -1,29 +1,43 @@
-import Link from "next/link";
+
 import React, { useEffect, useState } from "react";
 import RatingBigger from "./RatingBigger";
 import Image from "next/image";
 import Loader from "@/ui/loader/Loader";
 import { useAppContext } from "@/context/AppContext";
+import { useRouter } from "next/navigation";
 
 const CurrentProduct = ({ id }) => {
   const [data, setData] = useState();
 
   const { addToCart } = useAppContext();
 
+  const router = useRouter();
+  const handleBuyNow = async () => {
+    await addToCart(id);
+    router.push('/cart')
+  };
+
   useEffect(() => {
     const productDetails = async () => {
-      const res1 = await fetch(
-        `/api/products/${id}`
-      );
+      const res1 = await fetch(`/api/products/${id}`);
       const res2 = await res1.json();
       setData(res2);
     };
     productDetails();
   }, [id]);
 
-  if(!data) return <Loader />
+  if (!data) return <Loader />;
   else {
-    const { _id,  name, image, description, offerPrice, price, category, rating } = data;
+    const {
+      _id,
+      name,
+      image,
+      description,
+      offerPrice,
+      price,
+      category,
+      rating,
+    } = data;
     return (
       <div className="mb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 text-[#1f2937e6] gap-16">
@@ -65,21 +79,19 @@ const CurrentProduct = ({ id }) => {
             <p className="h-0.5 w-full bg-gray-200 my-6" />
 
             <div className="grid grid-cols-2 grid-rows-3 mb-6">
-
               <h1 className="font-medium text-gray-600">Category</h1>
               <p className="text-gray-800/50">{category}</p>
             </div>
 
             <div className="flex gap-6">
-              <button className="flex-1 bg-white cursor-pointer brightness-95 hover:brightness-90 py-3 border-1 border-gray-200 rounded-sm"
-              onClick={()=> addToCart(_id)}
+              <button
+                className="flex-1 bg-white cursor-pointer brightness-95 hover:brightness-90 py-3 border-1 border-gray-200 rounded-sm"
+                onClick={() => addToCart(_id)}
               >
                 Add to Cart
               </button>
-              <button className="flex-1 flex" onClick={()=> addToCart(_id)}>
-                <Link href="/cart"
-                className="border-1 flex-1 flex items-center justify-center border-orange-600 text-white font-medium bg-orange-600 rounded-sm cursor-pointer hover:bg-white hover:text-gray-600 duration-150 "
-                >Buy now</Link>
+              <button onClick={handleBuyNow} className="border-1 flex-1 flex items-center justify-center border-orange-600 text-white font-medium bg-orange-600 rounded-sm cursor-pointer hover:bg-white hover:text-gray-600 duration-150 ">
+                Buy now
               </button>
             </div>
           </div>
