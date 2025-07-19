@@ -1,10 +1,16 @@
-import { JellyTriangle } from "ldrs/react";
-import "ldrs/react/JellyTriangle.css";
+import { Zoomies } from "ldrs/react";
+import "ldrs/react/Zoomies.css";
 
 const Loader = () => {
   return (
-    <div className="flex grow justify-center items-center min-h-1/3"  >
-      <JellyTriangle size="30" speed="1.75" color="#f54a00" />
+    <div className="flex grow justify-center items-center min-h-1/3">
+      <Zoomies
+        size="80"
+        stroke="5"
+        bgOpacity="0.1"
+        speed="1.2"
+        color="#FF4A00"
+      />
     </div>
   );
 };

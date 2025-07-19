@@ -1,6 +1,7 @@
 import CartTable from "./components/CartTable";
 import { auth } from "@clerk/nextjs/server";
 import PlaceOrder from "./components/PlaceOrder";
+import Loader from "@/ui/loader/Loader";
 
 const getCartData = async (id) => {
   const res = await fetch(`${process.env.BASE_URL}/api/users/${id}`);
@@ -27,6 +28,15 @@ const getProductDetails = async (cartData) => {
 
 const Cart = async () => {
   const { userId } = await auth();
+
+  if (userId == null)
+    return (
+      <div className="flex flex-col gap-2 flex-grow box justify-center items-center">
+        <h2 className="text-[6vw] md:text-4xl">Not logged in</h2>
+        <p className="text-gray-800/50 text-sm mx-[2rem] text-center">Log in or sign up from the top right corner to add items to the cart.</p>
+      </div>
+    );
+
   const cartData = await getCartData(userId);
   let productDetails = await getProductDetails(cartData);
 

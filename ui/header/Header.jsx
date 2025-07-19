@@ -12,6 +12,7 @@ import Auth from "./Auth";
 export const Header = () => {
   // Navbar
   const [open, isOpen] = useState(false);
+  
   const handleNavToggle = () => {
     isOpen((prev) => !prev);
   };

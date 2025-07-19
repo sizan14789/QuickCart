@@ -48,7 +48,7 @@ const CheckoutForm = ({cartData, userId}) => {
     <form onSubmit={handleCheckout} className="flex flex-col max-w-96 md:max-w-full gap-3">
       <label htmlFor="name">Name</label>
       <input
-        className="outline-none focus:border-orange-600 sm:min-w-96 brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"
+        className="outline-none focus:border-orange-600 sm:min-w-96 focus:brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"
         type="text"
         required
         placeholder="Abdul Karim"
@@ -57,7 +57,7 @@ const CheckoutForm = ({cartData, userId}) => {
 
       <label htmlFor="phone">Phone</label>
       <input
-        className="outline-none focus:border-orange-600 sm:min-w-96 brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"
+        className="outline-none focus:border-orange-600 sm:min-w-96 focus:brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"
         type="text"
         required
         placeholder="+8801********"
@@ -66,7 +66,7 @@ const CheckoutForm = ({cartData, userId}) => {
 
       <label htmlFor="name">Address</label>
       <input
-        className="outline-none focus:border-orange-600 sm:min-w-96 brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"
+        className="outline-none focus:border-orange-600 sm:min-w-96 focus:brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"
         type="text"
         required
         placeholder="house no, street name, upzilla, zilla"
