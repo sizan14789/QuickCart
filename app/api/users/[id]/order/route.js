@@ -16,8 +16,6 @@ export async function POST(req) {
     ...newOrders
   ]
 
-  console.log(orders)
-
   const updated = await User.findByIdAndUpdate(userId, { cartItems: {}, orders: orders }, { new: true });
   return new NextResponse(JSON.stringify(updated), { status: 200 });
 }

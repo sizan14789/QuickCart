@@ -12,7 +12,9 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "QuickCart",
+  title: {
+    default: 'QuickCart',
+  },
   description: "An E-Commerce site",
 };
 

@@ -1,7 +1,12 @@
 import CartTable from "./components/CartTable";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import PlaceOrder from "./components/PlaceOrder";
 import Link from "next/link";
+
+export const metadata = {
+  title: 'Cart',
+  description: 'Cart page of QuickCart'
+}
 
 const getCartData = async (id) => {
   const res = await fetch(`${process.env.BASE_URL}/api/users/${id}`);

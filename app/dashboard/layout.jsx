@@ -1,9 +1,16 @@
-import SellerNavbar from "@/app/seller/components/SellerNavbar";
+import DashboardNavbar from "@/app/dashboard/components/DashboardNavbar";
 import authSeller from "@/lib/authSeller";
 import { redirect } from "next/navigation";
 import React from "react";
 
-const SellerLayout = async ({ children }) => {
+export const metadata = {
+  title: {
+    default: 'Dashboard',
+    template: '%s Dashboard'
+  }
+}
+
+const DashboardLayout = async ({ children }) => {
   
   const isSeller = await authSeller()
   if (!isSeller) redirect('/')
@@ -11,11 +18,11 @@ const SellerLayout = async ({ children }) => {
   return (
     <div className="box flex flex-col grow">
       <div className="flex grow">
-        <SellerNavbar />
+        <DashboardNavbar />
         {children}
       </div>
     </div>
   );
 };
 
-export default SellerLayout;
+export default DashboardLayout;

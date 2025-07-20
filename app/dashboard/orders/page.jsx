@@ -1,5 +1,9 @@
 import OrdersTable from "./components/OrdersTable";
 
+export const metadata={
+  title: 'Orders'
+}
+
 const getOrdersData = async () => {
   try {
     const res = await fetch(`${process.env.BASE_URL}/api/orders`);

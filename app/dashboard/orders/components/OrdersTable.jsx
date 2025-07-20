@@ -85,7 +85,7 @@ const OrdersTable = ({ ordersData }) => {
 
             <div className=" px-4 flex gap-2 md:gap-8 items-center justify-center py-2">
               <Link
-                href={`/seller/orders/${_id}`}
+                href={`/dashboard/orders/${_id}`}
                 className="cursor-pointer border-1 border-e-orange-600 py-2 md:py-3 w-20 md:w-32 text-sm rounded text-white text-medium duration-150 bg-orange-600 hover:brightness-90 text-center"
               >
                 View

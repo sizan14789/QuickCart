@@ -1,7 +1,11 @@
-import ProductsList from "@/app/seller/products/components/ProductsList";
+import ProductsList from "@/app/dashboard/products/components/ProductsList";
 import connectDB from "@/config/db";
 import Product from "@/models/product";
 import { auth } from "@clerk/nextjs/server";
+
+export const metadata = {
+  title: 'Products'
+}
 
 const Products = async () => {
   const { userId } = await auth()

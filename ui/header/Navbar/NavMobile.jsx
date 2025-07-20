@@ -38,7 +38,7 @@ const NavMobile = ({ handleNavToggle }) => {
         Contact
       </Link>
       <Link
-        href="/seller"
+        href="/dashboard"
         className={`text-xs border-1 border-gray-400 py-1.5 px-3 rounded-4xl ${
           isSeller ? "block" : "hidden"
         }`}

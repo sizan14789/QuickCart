@@ -25,8 +25,8 @@ const ProductsList = ({ productsList }) => {
   };
 
   return (
-    <div className="max-w-[75rem] border-gray-300 text-sm border-1 rounded-md text-gray-700 border-b-0">
-      <div className="grid grid-cols-2 md:grid-cols-4 grow  border-gray-300 border-b-1 text-black">
+    <div className="max-w-[75rem] border-gray-300 text-sm border-1 rounded-md text-gray-700 border-b-0 overflow-y-auto max-h-[75svh]">
+      <div className="grid grid-cols-2 md:grid-cols-4 grow  border-gray-300 border-b-1 text-black ">
         <h2 className=" px-6 py-2 flex justify-center items-center">Product</h2>
         <h2 className=" px-4 py-2 hidden md:flex justify-center items-center">Category</h2>
         <h2 className=" px-4 py-2 hidden md:flex justify-center items-center">Price</h2>

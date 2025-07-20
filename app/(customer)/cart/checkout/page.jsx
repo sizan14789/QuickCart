@@ -2,6 +2,11 @@ import { auth } from "@clerk/nextjs/server";
 import CheckoutForm from "./components/CheckoutForm";
 import { redirect } from "next/navigation";
 
+export const metadata = {
+  title: 'Checkout',
+  description: 'Checkout page of QuickCart'
+}
+
 const getCartData = async (id) => {
   const res = await fetch(`${process.env.BASE_URL}/api/users/${id}`);
   const user = await res.json();
