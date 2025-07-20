@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
           <AppContextProvider>
             <div className="bg-white text-black min-h-svh flex flex-col">
               <Header />
-              {children}
+              {children} 
               <Footer />
             </div>
           </AppContextProvider>

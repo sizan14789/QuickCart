@@ -1,12 +1,34 @@
+"use client"
+
 import Image from "next/image";
-import Link from "next/link";
 import Rating from "./Rating";
+import { useRouter } from "next/navigation";
+import { useAppContext } from "@/context/AppContext";
+import toast from "react-hot-toast";
 
 const Item = ({ curElem }) => {
+  const router = useRouter();
+  const { user, addToCart }= useAppContext();
+  const id=curElem._id;
+
+  const handleItemOnclick = ()=>{
+    router.push('/shop/'+id)
+  }
+
+  const handleBuyOnclick = async (e)=>{
+    e.stopPropagation()
+    
+    if (!user)
+      toast.error("Not logged in")
+
+    await addToCart(id)
+    router.push('/cart')
+  }
+
   return (
-    <Link
-      className="grid gap-1 max-w-[14.5rem] justify-self-center"
-      href={`/shop/${curElem._id}`}
+    <div
+      className="grid gap-1 max-w-[14.5rem] justify-self-center cursor-pointer"
+      onClick={handleItemOnclick}
     >
       <div className=" min-w-40 rounded-2xl mb-4">
         <figure className="object-cover relative w-auto aspect-square overflow-hidden">
@@ -32,11 +54,14 @@ const Item = ({ curElem }) => {
       </div>
       <div className="flex md:flex-col md:self-start md:gap-2 lg:self-auto lg:flex-row lg:gap-0 justify-between items-center">
         <p className="text-xl">${curElem.offerPrice}</p>
-        <button className="border-1 text-xs cursor-pointer border-gray-3400 rounded-2xl px-4 py-2">
+        <button 
+        onClick={handleBuyOnclick}
+        className="border-1 border-gray-400 hover:bg-orange-600
+        hover:border-orange-600 hover:text-white transition text-xs cursor-pointer border-gray-3400 rounded-2xl px-4 py-2">
           Buy now
         </button>
       </div>
-    </Link>
+    </div>
   );
 };
 
