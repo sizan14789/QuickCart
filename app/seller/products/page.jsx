@@ -5,16 +5,13 @@ const getProductsList = async () => {
     const res = await fetch(`${process.env.BASE_URL}/api/products/sellersList`);
     const data = await res.json();
     return data;
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 const Products = async () => {
   const productsList = await getProductsList();
 
-  if(!productsList)
-    return <h2>Internal error</h2>
+  if (!productsList) return <h2>Internal error</h2>;
 
   return (
     <div className="flex flex-col gap-6 p-4 grow">
