@@ -10,7 +10,7 @@ export async function GET() {
 
   connectDB();
   try {
-    const products = await Product.find({}).sort({ createdAt: -1 });
+    const products = await Product.find().sort({ createdAt: -1 });
     return new NextResponse(JSON.stringify(products), {status:200});
   } catch (error) {
     console.log(error);

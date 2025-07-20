@@ -41,7 +41,7 @@ const ProductsList = ({ productsList }) => {
             className="grid grid-cols-2 md:grid-cols-4 grow py-2 border-gray-300 border-b-1 "
             key={_id}
           >
-            <div className=" px-6 py-2 flex flex-col md:flex-row items-center gap-2">
+            <div className=" px-6 py-2 flex flex-col lg:flex-row items-center gap-2">
               <figure className=" rounded-xl ">
                 <Image
                   src={image[0]}
