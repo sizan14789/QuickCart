@@ -17,7 +17,7 @@ const AddOrBuy = ({id}) => {
     <div className="flex gap-6">
       <button
         className="flex-1 bg-white cursor-pointer brightness-95 hover:brightness-90 py-3 border-1 border-gray-200 rounded-sm"
-        onClick={() => addToCart(_id)}
+        onClick={() => addToCart(id)}
       >
         Add to Cart
       </button>

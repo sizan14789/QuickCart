@@ -1,38 +1,30 @@
-"use client";
-
-import Loader from "@/ui/loader/Loader";
+import { format } from "date-fns";
 import Image from "next/image";
-import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
+const getOrderData = async (id) => {
+  const res = await fetch(`${process.env.BASE_URL}/api/orders/${id}`);
+  const data = await res.json();
+  const { productId } = data;
 
+  const res2 = await fetch(`${process.env.BASE_URL}/api/products/${productId}`);
+  const data2 = await res2.json();
 
-const Order = () => {
-  const { id } = useParams()
-  const [orderDetails, setOrderDetails] = useState();
+  const { name, image, description, category, offerPrice, price } = data2;
 
-  useEffect(() => {
-    const getOrderData = async () => {
-      const res = await fetch(`/api/orders/${id}`);
-      const data = await res.json();
-      const { productId, quantity, address, username, phone } = data;
-      const res2 = await fetch(`/api/products/${productId}`);
-      const data2 = await res2.json();
-      const { name, image, description, category, offerPrice, price } = data2;
-      setOrderDetails({
-        ...data,
-        name,
-        image,
-        description,
-        offerPrice,
-        price,
-        category,
-      });
-    };
-    getOrderData();
-  }, []);
+  return {
+    ...data,
+    name,
+    image,
+    description,
+    offerPrice,
+    price,
+    category,
+  };
+};
 
-  if (!orderDetails) return <Loader />;
+const Order = async ({ params }) => {
+  const { id } = await params;
+  const order = await getOrderData(id);
 
   const {
     quantity,
@@ -45,7 +37,11 @@ const Order = () => {
     category,
     offerPrice,
     price,
-  } = orderDetails;
+    createdAt,
+  } = order;
+
+  const date = new Date(createdAt);
+  const formatted = format(date, "MMM dd, yyyy");
 
   return (
     <div className="p-2 flex">
@@ -90,11 +86,28 @@ const Order = () => {
 
           <div className="text-xl">
             <h2 className="text-2xl">Ordered By</h2>
-            <p>Name: <span className="text-gray-800/50">{username} </span> </p>
-            <p>Address: <span className="text-gray-800/50">{address} </span> </p>
-            <p>Phone: <span className="text-gray-800/50">{phone} </span> </p>
-            <p>Quantity: <span className="text-gray-800/50">{quantity} </span> </p>
-            <p>Total: <span className="text-gray-800/50">{quantity}x{offerPrice}={quantity*offerPrice}$ </span> </p>
+            <p>
+              Name: <span className="text-gray-800/50">{username} </span>{" "}
+            </p>
+            <p>
+              Address: <span className="text-gray-800/50">{address} </span>{" "}
+            </p>
+            <p>
+              Phone: <span className="text-gray-800/50">{phone} </span>{" "}
+            </p>
+            <p>
+              Quantity: <span className="text-gray-800/50">{quantity} </span>{" "}
+            </p>
+            <p>
+              Total:{" "}
+              <span className="text-gray-800/50">
+                {quantity}x{offerPrice}={quantity * offerPrice}${" "}
+              </span>{" "}
+            </p>
+            <p>
+              Order date:
+              <span className="text-gray-800/50"> {formatted} </span>
+            </p>
           </div>
         </div>
       </div>

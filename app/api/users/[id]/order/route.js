@@ -8,19 +8,15 @@ export async function POST(req) {
 
   const { userId } = await auth()
   const user = await User.findById(userId);  
+  const oldOrders = user.orders;
 
-  const cart = user.cartItems;
-  const entries = Object.entries(cart);
+  const newOrders = await req.json();
+  const orders = [
+    ...oldOrders,
+    ...newOrders
+  ]
 
-  const orders = { ...user.orders }
-
-  entries.forEach((entry) => {
-    if (orders[entry[0]]) {
-      orders[entry[0]] = orders[entry[0]] + entry[1];
-    } else {
-      orders[entry[0]] = entry[1];
-    }
-  })
+  console.log(orders)
 
   const updated = await User.findByIdAndUpdate(userId, { cartItems: {}, orders: orders }, { new: true });
   return new NextResponse(JSON.stringify(updated), { status: 200 });

@@ -7,11 +7,16 @@ import toast from "react-hot-toast";
 const CheckoutForm = ({cartData, userId}) => {
   const router = useRouter();
 
-
-  const synchUserOrder = async () => {
-    await fetch(`/api/users/${userId}/order`, {
+  const synchUserOrder = async (ordersList) => {
+    const res = await fetch(`/api/users/${userId}/order`, {
       method: "POST",
+      body: JSON.stringify(ordersList)
     });
+
+    if (res.status==200)
+      console.log("user synced")
+    else
+      console.log("failed to sync user");
   };
 
   const handleCheckout = async (e) => {
@@ -23,7 +28,7 @@ const CheckoutForm = ({cartData, userId}) => {
     const address = formdata.get("address");
     const phone = formdata.get("phone");
 
-    await Promise.all(
+    const ordersList = await Promise.all(
       entries.map(async (entry) => {
         const newData = new FormData();
         newData.append("username", username);
@@ -33,19 +38,21 @@ const CheckoutForm = ({cartData, userId}) => {
         newData.append("quantity", entry[1]);
         newData.append("userId", userId);
 
-        await fetch(`/api/orders`, {
+        const res = await fetch(`/api/orders`, {
           method: "POST",
           body: newData,
         });
+        const data = await res.json()
+        return data._id;
       })
     );
-    await synchUserOrder();
+    await synchUserOrder(ordersList);
     toast.success("Order Placed");
     router.push('/cart/checkout/thankyou');
   };
 
   return (
-    <form onSubmit={handleCheckout} className="flex flex-col max-w-96 md:max-w-full gap-3">
+    <form onSubmit={handleCheckout} className=" flex flex-col max-w-96 md:max-w-full gap-3">
       <label htmlFor="name">Name</label>
       <input
         className="outline-none focus:border-orange-600 sm:min-w-96 focus:brightness-95 border-1 border-gray-300 rounded-md px-2 bg-white py-4"

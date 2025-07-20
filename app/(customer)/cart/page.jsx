@@ -1,7 +1,7 @@
 import CartTable from "./components/CartTable";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import PlaceOrder from "./components/PlaceOrder";
-import Loader from "@/ui/loader/Loader";
+import Link from "next/link";
 
 const getCartData = async (id) => {
   const res = await fetch(`${process.env.BASE_URL}/api/users/${id}`);
@@ -33,12 +33,14 @@ const Cart = async () => {
     return (
       <div className="flex flex-col gap-2 flex-grow box justify-center items-center">
         <h2 className="text-[6vw] md:text-4xl">Not logged in</h2>
-        <p className="text-gray-800/50 text-sm mx-[2rem] text-center">Log in or sign up from the top right corner to add items to the cart.</p>
+        <p className="text-gray-800/50 text-sm mx-[2rem] text-center">
+          Log in or sign up from the top right corner to add items to the cart.
+        </p>
       </div>
     );
 
   const cartData = await getCartData(userId);
-  let productDetails = await getProductDetails(cartData);
+  const productDetails = await getProductDetails(cartData);
 
   return (
     <div className="box flex-1">
@@ -50,11 +52,17 @@ const Cart = async () => {
             </h2>
           </div>
           <hr className="text-gray-400 mb-4" />
-          <CartTable
-            userId={userId}
-            cartData={cartData}
-            productDetails={productDetails}
-          />
+          {productDetails.length === 0 ? (
+            <h2 className="text-center text-gray-800/50 mt-3 mb-5">
+              Your cart is empty. Visit <Link href="/shop" className="text-orange-600" >shop</Link>{" "}
+            </h2>
+          ) : (
+            <CartTable
+              userId={userId}
+              cartData={cartData}
+              productDetails={productDetails}
+            />
+          )}
         </div>
 
         <PlaceOrder cartItemsQuantity={productDetails.length} />

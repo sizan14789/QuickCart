@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import CheckoutForm from "./components/CheckoutForm";
+import { redirect } from "next/navigation";
 
 const getCartData = async (id) => {
   const res = await fetch(`${process.env.BASE_URL}/api/users/${id}`);
@@ -26,8 +27,17 @@ const getProductDetails = async (cartData) => {
 
 const Checkout = async () => {
   const { userId } = await auth();
+  
+  if (userId==null){
+    redirect('/', 'replace');
+  }
+
   const cartData = await getCartData(userId);
   const productDetails = await getProductDetails(cartData);
+
+  if (productDetails.length===0){
+    redirect('/', 'replace');
+  }
 
   const getTotal = ()=>{
     let total=0;
@@ -48,7 +58,7 @@ const Checkout = async () => {
 
       </div>
 
-      <div className="flex flex-col border-1 border-gray-300 rounded-md md:min-w-72 lg:min-w-96">
+      <div className="shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] flex flex-col border-1 border-gray-300 rounded-md md:min-w-72 lg:min-w-96">
         <h2 className="text-4xl py-4 text-center border-b-1 border-b-gray-300 text-orange-600">
           Checkout
         </h2>

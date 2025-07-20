@@ -3,7 +3,6 @@ import Image from "next/image";
 import AddOrBuy from "./AddOrBuy";
 
 const getProductDetails = async (id) => {
-  console.log(id)
   const res1 = await fetch(`${process.env.BASE_URL}/api/products/${id}`);
   const res2 = await res1.json();
   return res2;

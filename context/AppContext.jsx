@@ -8,12 +8,10 @@ const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
   const { user } = useUser();
-  const { getToken } = useAuth();
   const [userData, setUserData] = useState();
   const [isSeller, setIsSeller] = useState(false);
-  
+
   const addToCart = async (id) => {
-    console.log(id)
     if (user) {
       await fetch(`/api/cart/update/add`, {
         method: "post",
@@ -54,7 +52,6 @@ export const AppContextProvider = ({ children }) => {
     user,
     userData,
     isSeller,
-    getToken,
     addToCart,
   };
 

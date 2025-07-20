@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^6.18.0",
     "cloudinary": "^2.6.0",
+    "date-fns": "^4.1.0",
     "env": "^0.0.2",
     "inngest": "^3.35.1",
     "ldrs": "^1.1.7",

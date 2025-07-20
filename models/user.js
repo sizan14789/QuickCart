@@ -20,7 +20,7 @@ const userSchema = new Schema(
       required: true,
     },
     cartItems: { type: Object, default: {} },
-    orders: { type: Object, default: {} }
+    orders: { type: Array, default: [] }
   },
   { minimize: false }
 );
