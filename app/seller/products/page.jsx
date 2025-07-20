@@ -1,15 +1,15 @@
 import ProductsList from "@/app/seller/products/components/ProductsList";
-
-const getProductsList = async () => {
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/api/products/sellersList`);
-    const data = await res.json();
-    return data;
-  } catch (error) {}
-};
+import connectDB from "@/config/db";
+import Product from "@/models/product";
+import { auth } from "@clerk/nextjs/server";
 
 const Products = async () => {
-  const productsList = await getProductsList();
+  const { userId } = await auth()
+
+  await connectDB();
+  const products = await Product.find({userId:userId}).sort({createdAt: 1})
+  
+  const productsList = JSON.parse(JSON.stringify(products))
 
   if (!productsList) return <h2>Internal error</h2>;
 

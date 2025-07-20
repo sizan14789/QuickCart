@@ -1,6 +1,7 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { format, formatDistanceToNow } from "date-fns";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const getOrderProductDetails = async (ordersDetailsArray) => {
   const orderProductDetails = await Promise.all(
@@ -44,6 +45,8 @@ const getOrderData = async (id) => {
 
 const page = async () => {
   const { userId } = await auth();
+  if (!userId)
+    redirect('/')
   const orderDetails = await getOrderData(userId);
 
   return (
