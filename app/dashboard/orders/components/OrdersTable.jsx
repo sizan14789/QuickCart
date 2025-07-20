@@ -46,7 +46,6 @@ const OrdersTable = ({ ordersData }) => {
 
         const date = new Date(createdAt);
         const formatted = format(date, "MMM dd, yyyy");
-        console.log(formatted);
 
         return (
           <div className="border-b-1 border-b-gray-300 rounded-b-md" key={_id}>
