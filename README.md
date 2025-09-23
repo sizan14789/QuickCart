@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📌 QuickCart - E-Commerce Platform
 
-## Getting Started
+QuickCart is a modern e-commerce application built with Next.js (full-stack), MongoDB, and Tailwind CSS. It allows customers to browse and place orders, and sellers to manage their products through a dedicated dashboard.  
 
-First, run the development server:
+> ⚠️ Note: Payments are not online yet; orders can be placed but manual payment is required.  
+
+---
+
+## 🌐 Live Demo
+
+[**Click here**](https://quick-cart-sizan.vercel.app/)  
+
+---
+
+## Preview
+
+### Customer Site
+
+<p align="center">
+  <img src="./assets/customerHome.png" alt="Customer Home" width="75%" />
+  <img src="./assets/customerProduct.png" alt="Customer Product" width="75%" />
+  <img src="./assets/customerCart.png" alt="Customer Cart" width="75%" />
+</p>
+
+### Seller Dashboard
+
+<p align="center">
+  <img src="./assets/sellerDashboard.png" alt="Seller Dashboard" width="75%" />
+  <img src="./assets/sellerOrders.png" alt="Seller Orders" width="75%" />
+</p>
+
+---
+
+## 🚀 Features
+
+- 🛍️ Browse and add products to cart 
+
+- 📦 Place orders (manual payment)  
+
+- 👨‍💼 Seller dashboard for product and order management  
+
+- 🔒 Authentication with Clerk  
+
+- 💻 Responsive UI with Tailwind CSS  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend & Backend:** Next.js (Full-stack)  
+
+- **Database:** MongoDB  
+
+- **Styling:** Tailwind CSS  
+
+- **Authentication:** Clerk  
+
+- **Local Testing / Tunneling:** Ngrok  
+
+---
+
+## ⚙️ Installation & Setup
+
+#### Clone the repo:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/sizan14789/QuickCart.git
 ```
+#### setup env:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```ini
+MONGO=<your_mongodb_uri>
+BASE_URL=http://localhost:3000
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<your clerk publishable key>
+CLERK_SECRET_KEY=<your clerk secret key>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+WEBOOK_SECRET=<your webhook secret>
+CLERK_WEBHOOK_SIGNING_SECRET=<your webhook signing secret>
 
-## Learn More
+CLOUDINARY_CLOUD_NAME=<your cloud name>
+CLOUDINARY_API_KEY=<your api key>
+CLOUDINARY_API_SECRET=<your api secret>
+```
+#### Run:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+npm i; npm run dev
+```
