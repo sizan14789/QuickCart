@@ -12,11 +12,9 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-/* eslint-disable */
 export async function POST(req) {
   const { userId } = getAuth(req);
   const isSeller = await authSeller(userId);
-  /* eslint-enable */
   if (!isSeller) {
     return NextResponse.json({ success: false, message: "not authorized" });
   }
